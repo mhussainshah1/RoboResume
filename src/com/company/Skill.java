@@ -9,9 +9,9 @@ enum Rating {
 }
 
 public class Skill {
-    String Competency;
-    String Proficiency;
-    Rating rating;
+    private String Competency;
+    private String Proficiency;
+    private Rating rating;
 
     public String getCompetency() {
         return Competency;

@@ -37,4 +37,11 @@ public class Education {
     public void setMajor(String major) {
         this.major = major;
     }
+
+    @Override
+    public String toString() {
+        return "Education\n"+
+                degree + " in " + major + "\n" +
+                school + ", " + year + "\n";
+    }
 }

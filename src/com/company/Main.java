@@ -33,32 +33,42 @@ public class Main {
             System.out.print("Enter Phone number: ");
             person.setPhoneNumber(keyboard.nextLine());
 
+            //Education
             do{
-                System.out.println("Enter School Name");
+                Education education = new Education();
+                System.out.print("Enter School Name");
+                education.setSchool(keyboard.nextLine());
 
-                System.out.println("Enter year");
+                System.out.print("Enter year");
+                education.setYear(keyboard.nextInt());
 
-                System.out.println("Enter degree");
+                System.out.print("Enter degree");
+                education.setDegree(keyboard.nextLine());
 
-                System.out.println("Enter major");
+                System.out.print("Enter major");
+                education.setMajor(keyboard.nextLine());
 
                 System.out.print("Do you want to add another Education (y/n)");
                 choice = keyboard.next().charAt(0);
+                person.getEducations().add(education);
             } while (choice == 'y');
 
-            do{
-
-                System.out.print("Do you want to add another Experience (y/n)");
-                choice = keyboard.next().charAt(0);
-            } while (choice == 'y');
-
-            do{
-
-                System.out.print("Do you want to add another Skill (y/n)");
-                choice = keyboard.next().charAt(0);
-            } while (choice == 'y');
+            //Experience
+//            do{
+//
+//                System.out.print("Do you want to add another Experience (y/n)");
+//                choice = keyboard.next().charAt(0);
+//            } while (choice == 'y');
+//
+//          //Skills
+//            do{
+//
+//                System.out.print("Do you want to add another Skill (y/n)");
+//                choice = keyboard.next().charAt(0);
+//            } while (choice == 'y');
 
             people.add(person);
+
             System.out.print("Do you want to add another resume (y/n)");
             choice = keyboard.next().charAt(0);
         } while (choice == 'y');

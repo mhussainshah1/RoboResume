@@ -3,10 +3,10 @@ package com.company;
 import java.util.Date;
 
 public class Experience {
-    String company;
-    String title;
-    Date date;
-    String description;
+    private String company;
+    private String title;
+    private Date date;
+    private String description;
 
     public String getCompany() {
         return company;

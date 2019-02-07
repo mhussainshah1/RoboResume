@@ -6,17 +6,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Person {
-    String name;
-    String email;
-    String phoneNumber;
-    List<Education> education;
-    List<Experience> experience;
-    List<Skill> skill;
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private List<Education> educations;
+    private List<Experience> experiences;
+    private List<Skill> skills;
 
     public Person(){
-        education = new ArrayList<>();
-        experience = new ArrayList<>();
-        skill = new ArrayList<>();
+        educations = new ArrayList<>();
+        experiences = new ArrayList<>();
+        skills = new ArrayList<>();
     }
     public String getName() {
         return name;
@@ -46,28 +46,28 @@ public class Person {
         }
     }
 
-    public List<Education> getEducation() {
-        return education;
+    public List<Education> getEducations() {
+        return educations;
     }
 
-    public void setEducation(List<Education> education) {
-        this.education = education;
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
     }
 
-    public List<Experience> getExperience() {
-        return experience;
+    public List<Experience> getExperiences() {
+        return experiences;
     }
 
-    public void setExperience(List<Experience> experience) {
-        this.experience = experience;
+    public void setExperiences(List<Experience> experiences) {
+        this.experiences = experiences;
     }
 
-    public List<Skill> getSkill() {
-        return skill;
+    public List<Skill> getSkills() {
+        return skills;
     }
 
-    public void setSkill(List<Skill> skill) {
-        this.skill = skill;
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
     }
 
     private boolean isEmailValid(String email){
@@ -99,8 +99,14 @@ public class Person {
 
     @Override
     public String toString() {
-        return  name + "\n" +
+        String output =
+                name + "\n" +
                 email + "\n" +
-                phoneNumber + "\n";
+                phoneNumber + "\n\n";
+
+        for(Education education : educations){
+            output += education.toString();
+        }
+        return output;
     }
 }
