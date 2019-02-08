@@ -53,6 +53,6 @@ public class Experience {
         for (int i = 0; i < descriptions.size(); i++) {
             output +=  "- Duty " + (i + 1) +", " + descriptions.get(i) + "\n";
         }
-        return output + "\n";
+        return output;
     }
 }

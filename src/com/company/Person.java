@@ -18,6 +18,7 @@ public class Person {
         experiences = new ArrayList<>();
         skills = new ArrayList<>();
     }
+
     public String getName() {
         return name;
     }
@@ -72,7 +73,6 @@ public class Person {
 
     private boolean isEmailValid(String email){
         boolean isValid = false;
-
         String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         CharSequence inputStr = email;
         //Make the comparison case-insensitive.
@@ -86,7 +86,6 @@ public class Person {
 
     private boolean isPhoneNumberValid(String phoneNumber){
         boolean isValid = false;
-
         String expression = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$";
         CharSequence inputStr = phoneNumber;
         Pattern pattern = Pattern.compile(expression);
@@ -102,22 +101,19 @@ public class Person {
         String output ="\n" +
                 name + "\n" +
                 email + "\n" +
-                phoneNumber;
-
-        output +="\n\n"+"Education\n";
+                phoneNumber+ "\n";
+        output +="\n"+"Education\n";
         for(Education education : educations){
-            output += education;
+            output += education + "\n";
         }
-        output += "\n\n"+"Experience\n" ;
+        output += "\n"+"Experience\n" ;
         for(Experience experience: experiences){
-            output += experience;
+            output += experience+ "\n";
         }
-
-        output += "\n\n"+"Skills\n";
+        output += "\n"+"Skills\n";
         for(Skill skill: skills){
             output += skill;
         }
-
         return output;
     }
 }

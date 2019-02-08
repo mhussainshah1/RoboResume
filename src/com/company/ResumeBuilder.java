@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -32,7 +33,7 @@ public class ResumeBuilder {
             person.setPhoneNumber(keyboard.nextLine());
 
             //Education
-            System.out.print("Do you have any Education? (y/n) ");
+            System.out.print("Do you have any Education? (y/n):");
             choice = keyboard.nextLine().charAt(0);
             while( choice == 'y'){
                 Education education = new Education();
@@ -49,11 +50,11 @@ public class ResumeBuilder {
                 education.setMajor(keyboard.nextLine());
                 person.getEducations().add(education);
 
-                System.out.print("Do you want to enter another Education? (y/n)");
+                System.out.print("Do you want to enter another Education? (y/n):");
                 choice = keyboard.nextLine().charAt(0);
             }
             //Experience
-            System.out.print("Do you have any Experience? ");
+            System.out.print("Do you have any Experience? (y/n):");
             choice = keyboard.nextLine().charAt(0);
             while( choice == 'y'){
                 Experience experience = new Experience();
@@ -63,7 +64,7 @@ public class ResumeBuilder {
                 System.out.print("Enter title: ");
                 experience.setTitle(keyboard.nextLine());
 
-                System.out.print("Enter dates from - to: (MMM YYYY - MMM YYYY) ");
+                System.out.print("Enter dates from - to (MMM YYYY - MMM YYYY): ");
                 experience.setDate(keyboard.nextLine());
 
                 List<String> description = experience.getDescriptions();
@@ -71,16 +72,16 @@ public class ResumeBuilder {
                     System.out.print("Enter Description: ");
                     description.add(keyboard.nextLine());
                     experience.setDescriptions(description);
-                    System.out.print("Do you have another description? (y/n)");
+                    System.out.print("Do you have another description? (y/n):");
                     choice = keyboard.nextLine().charAt(0);
                 }
                 person.getExperiences().add(experience);
 
-                System.out.print("Do you want to enter another Experience? (y/n)");
+                System.out.print("Do you want to enter another Experience? (y/n):");
                 choice = keyboard.nextLine().charAt(0);
             }
           //Skills
-            System.out.print("Do you have any Skill? (y/n)");
+            System.out.print("Do you have any Skill? (y/n):");
             choice = keyboard.nextLine().charAt(0);
             while( choice == 'y'){
                 Skill skill = new Skill();
@@ -92,17 +93,53 @@ public class ResumeBuilder {
 
                 person.getSkills().add(skill);
 
-                System.out.print("Do you want to enter another Skill (y/n)");
+                System.out.print("Do you want to enter another Skill? (y/n):");
                 choice = keyboard.nextLine().charAt(0);
             }
             people.add(person);
 
-            System.out.print("Do you want to enter another resume? (y/n)");
+            System.out.print("Do you want to enter another resume? (y/n):");
             choice = keyboard.nextLine().charAt(0);
         } while (choice == 'y');
 
         for (Person person: people) {
             System.out.println(person);
+
+            //writing resume into a file
+            System.out.println("writing the resume into a file");
+            String filename = (System.getProperty("user.dir") + File.separatorChar + person.getName() + ".txt");
+            System.out.println(filename);
+
+            PrintWriter writer = null;
+            try {
+                writer = new PrintWriter(new File(filename));
+                writer.println(person);
+            } catch (FileNotFoundException e) {
+                System.out.println("File does not exist!");
+            } finally {
+                writer.close();
+            }
+//
+//            //read from a file
+//            System.out.println("read resume from a file");
+//            BufferedReader reader = null;
+//            try {
+//                reader = new BufferedReader(new FileReader(filename));
+//                String line = reader.readLine();
+//                while (line != null) {
+//                    //System.out.println(line);
+//                    String[] key_value_pair = line.split("\t");
+//                    System.out.println("KV Pair:" + key_value_pair[0] + " " + key_value_pair[1]);
+//                    //the key is in key_value_pair[0]
+//                    //the value is in key_value_pair[1]
+//                    // now you could add it back to the hash map if it isn't there already
+//
+//                    line = reader.readLine();
+//                }
+//                reader.close();
+//            } catch (IOException e) {
+//                System.out.println("File does not exist!");
+//            }
         }
     }
 }
