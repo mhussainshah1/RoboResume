@@ -1,17 +1,8 @@
 package com.company;
 
-enum Rating {
-    Fundamental,
-    Novice,
-    Intermediate,
-    Advanced,
-    Expert;
-}
-
 public class Skill {
     private String Competency;
     private String Proficiency;
-    private Rating rating;
 
     public String getCompetency() {
         return Competency;
@@ -29,11 +20,8 @@ public class Skill {
         Proficiency = proficiency;
     }
 
-    public Rating getRating() {
-        return rating;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
+    @Override
+    public String toString() {
+        return Competency + "," +Proficiency + "\n";
     }
 }

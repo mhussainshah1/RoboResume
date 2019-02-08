@@ -1,12 +1,17 @@
 package com.company;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Experience {
     private String company;
     private String title;
-    private Date date;
-    private String description;
+    private String date;
+    private List<String> descriptions;
+
+    public Experience() {
+        descriptions = new ArrayList<>();
+    }
 
     public String getCompany() {
         return company;
@@ -24,19 +29,30 @@ public class Experience {
         this.title = title;
     }
 
-    public Date getDate() {
+    public List<String> getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(List<String> descriptions) {
+        this.descriptions = descriptions;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    @Override
+    public String toString() {
+        String output = title + "\n" +
+                        company + ", " + date + "\n";
 
-    public void setDescription(String description) {
-        this.description = description;
+        for (int i = 0; i < descriptions.size(); i++) {
+            output +=  "- Duty " + (i + 1) +", " + descriptions.get(i) + "\n";
+        }
+        return output + "\n";
     }
 }

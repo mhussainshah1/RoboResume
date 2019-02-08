@@ -99,14 +99,25 @@ public class Person {
 
     @Override
     public String toString() {
-        String output =
+        String output ="\n" +
                 name + "\n" +
                 email + "\n" +
-                phoneNumber + "\n\n";
+                phoneNumber;
 
+        output +="\n\n"+"Education\n";
         for(Education education : educations){
-            output += education.toString();
+            output += education;
         }
+        output += "\n\n"+"Experience\n" ;
+        for(Experience experience: experiences){
+            output += experience;
+        }
+
+        output += "\n\n"+"Skills\n";
+        for(Skill skill: skills){
+            output += skill;
+        }
+
         return output;
     }
 }

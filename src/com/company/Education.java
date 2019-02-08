@@ -2,7 +2,7 @@ package com.company;
 
 public class Education {
     private String school;
-    private int year;
+    private String year;
     private String degree;
     private String major;
 
@@ -14,11 +14,11 @@ public class Education {
         this.school = school;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -40,8 +40,7 @@ public class Education {
 
     @Override
     public String toString() {
-        return "Education\n"+
-                degree + " in " + major + "\n" +
+        return  degree + " in " + major + "\n" +
                 school + ", " + year + "\n";
     }
 }
