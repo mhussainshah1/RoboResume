@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.company</OriginalElement>
+  <nodes>
+    <node x="327.0" y="0.0">com.company.Experience</node>
+    <node x="0.0" y="0.0">com.company.Person</node>
+    <node x="0.0" y="368.0">com.company.Education</node>
+    <node x="406.0" y="368.0">com.company.Recruiter</node>
+    <node x="203.0" y="368.0">com.company.Skill</node>
+    <node x="0.0" y="566.0">com.company.ResumeBuilder</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="343.0" y="381.0" />
+  <SelectedNodes>
+    <node>com.company.Experience</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

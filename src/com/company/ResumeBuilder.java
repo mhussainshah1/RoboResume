@@ -11,6 +11,13 @@ import java.util.Scanner;
  * zero or more educational achievements each of which contain a school and a year and a degree and major,
  * zero or more experiences each contains a company, title, date and description,
  * zero or more skills - each with a Competency Proficiency rating (Fundamental, Novice, Intermediate, Advanced, Expert)
+ *
+ * Done Already?
+ * Allow a person to change their name, e-mail address and/or phone number
+ *
+ * Create a recruiter class. The recruiter can search all the resumes and find those with a particular skill. You only
+ * have to search for one skill. So if you have five resumes and three contain Java then the search should return a list
+ * of those three people's names.
  */
 public class ResumeBuilder {
 
@@ -20,6 +27,34 @@ public class ResumeBuilder {
         char answer;
         char choice;
         List<Person> people = new ArrayList<>();
+
+            //read from a file
+            System.out.println("reading resume from a file");
+            String filename = System.getProperty("user.dir") + File.separatorChar + "Muhammad Shah.txt";
+            System.out.println(filename);
+
+            BufferedReader reader = null;
+            File file = new File(filename);
+            try {
+                reader = new BufferedReader(new FileReader(file));
+                String line = reader.readLine();
+                while (line != null) {
+                    System.out.println(line);
+//                    String[] key_value_pair = line.split("\t");
+//                    System.out.println("KV Pair:" + key_value_pair[0] + " " + key_value_pair[1]);
+//                    //the key is in key_value_pair[0]
+//                    //the value is in key_value_pair[1]
+//                    // now you could add it back to the hash map if it isn't there already
+//
+                    line = reader.readLine();
+                }
+                reader.close();
+            } catch (IOException e) {
+                System.out.println("File does not exist!");
+            }
+
+            //file into arraylist
+
 
         do {
             Person person = new Person();
@@ -105,9 +140,33 @@ public class ResumeBuilder {
         for (Person person: people) {
             System.out.println(person);
 
+            System.out.print("Do you want to change your name? (y/n)");
+            choice = keyboard.nextLine().charAt(0);
+
+            if(choice == 'y') {
+                System.out.print("Enter corrected name: ");
+                person.setName(keyboard.nextLine());
+            }
+
+            System.out.print("Do you want to change your email? (y/n)");
+            choice = keyboard.nextLine().charAt(0);
+
+            if(choice == 'y') {
+                System.out.print("Enter corrected Email: ");
+                person.setEmail(keyboard.nextLine());
+            }
+
+            System.out.print("Do you want to change your Phone number? (y/n)");
+            choice = keyboard.nextLine().charAt(0);
+
+            if(choice == 'y') {
+                System.out.print("Enter corrected Phone number: ");
+                person.setPhoneNumber(keyboard.nextLine());
+            }
+
             //writing resume into a file
             System.out.println("writing the resume into a file");
-            String filename = (System.getProperty("user.dir") + File.separatorChar + person.getName() + ".txt");
+            filename = System.getProperty("user.dir") + File.separatorChar + person.getName() + ".txt";
             System.out.println(filename);
 
             PrintWriter writer = null;
@@ -119,27 +178,21 @@ public class ResumeBuilder {
             } finally {
                 writer.close();
             }
-//
-//            //read from a file
-//            System.out.println("read resume from a file");
-//            BufferedReader reader = null;
-//            try {
-//                reader = new BufferedReader(new FileReader(filename));
-//                String line = reader.readLine();
-//                while (line != null) {
-//                    //System.out.println(line);
-//                    String[] key_value_pair = line.split("\t");
-//                    System.out.println("KV Pair:" + key_value_pair[0] + " " + key_value_pair[1]);
-//                    //the key is in key_value_pair[0]
-//                    //the value is in key_value_pair[1]
-//                    // now you could add it back to the hash map if it isn't there already
-//
-//                    line = reader.readLine();
-//                }
-//                reader.close();
-//            } catch (IOException e) {
-//                System.out.println("File does not exist!");
-//            }
         }
+    }
+
+    public static ArrayList<String> readLines(File file) throws Exception {
+        if (!file.exists()) {
+            return new ArrayList<String>();
+        }
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        ArrayList<String> results = new ArrayList<String>();
+        String line = reader.readLine();
+        while (line != null) {
+            results.add(line);
+            line = reader.readLine();
+        }
+        reader.close();
+        return results;
     }
 }

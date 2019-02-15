@@ -1,6 +1,13 @@
 ### Robo Resume
 
-Write a program that will display a resume in an organized format.
+#### Write a program that will display a resume in an organized format.
+
+As usual, this project is a SOLO project, and is due at 4.59 pm!! 
+
+This project must be the only project in its GitHub repository.
+
+**DO NOT FORGET TO SUBMIT THE WEEKLY FEEDBACK TODAY**
+
 The resume must allow any user to enter and display:
 - a name, 
 - an email address, 
@@ -17,11 +24,12 @@ This application should be able to capture information for multiple people.
 Done Already?
 - Write the output to a file
 - Allow a person to change their name, e-mail address and/or phone number
- 
+- Create a recruiter class. The recruiter can search all the resumes and find those with a particular skill. You only have to search for one skill. So if you have five resumes and three contain Java then the search should return a list of those three people's names.
 
 The program should output the information to look something like the following:
 
 ```
+=================================================================='
 John J Jingleheimer-Schmidt
 jjjschmidt@gmail.com
 

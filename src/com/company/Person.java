@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.Serializable;
 
-public class Person {
+public class Person implements Serializable{
+    //default serialVersion id
+    private static final long serialVersionUID = 1L;
+
     private String name;
     private String email;
     private String phoneNumber;
