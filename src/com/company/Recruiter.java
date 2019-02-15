@@ -20,14 +20,15 @@ import java.util.function.Consumer;
  * have to search for one skill. So if you have five resumes and three contain Java then the search should return a list
  * of those three people's names.
  */
+
 public class Recruiter {
     public static void main(String[] args) {
         System.out.println("There are following people files in the system");
         //Load all resume paths
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
-//        System.out.println(path);
         List<Path> pathList = new ArrayList<>();
         List<String> fileList = new ArrayList<>();
+
         List<String> recruitNames = new ArrayList<>();
 
         //HashMap of Recruit File name and their resume
