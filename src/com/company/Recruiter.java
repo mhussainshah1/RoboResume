@@ -22,14 +22,18 @@ import java.util.function.Consumer;
  */
 public class Recruiter {
     public static void main(String[] args) {
+        System.out.println("There are following people files in the system");
         //Load all resume paths
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
 //        System.out.println(path);
         List<Path> pathList = new ArrayList<>();
+        List<String> fileList = new ArrayList<>();
+        List<String> recruitNames = new ArrayList<>();
 
-        //HashMap of Recruit File Path and their resume
-        Map<Path , List<String> > recruiterMap = new HashMap<>();
+        //HashMap of Recruit File name and their resume
+        Map<String , List<String> > recruiterMap = new HashMap<>();
 
+        //Add all path of txt files
         try{
             Files.walk(path)
                     .filter(p -> p.toString().endsWith(".txt"))
@@ -37,52 +41,37 @@ public class Recruiter {
                         @Override
                         public void accept(Path path) {
                             pathList.add(path);
+                            fileList.add(path.getFileName().toString());
                         }
                     });
         }catch (IOException e){
             e.printStackTrace();
         }
 
-        for (Path p: pathList) {
+        for (String fileName: fileList) {
             List<String> resume = new ArrayList<>();
-            String recuitFileName = p.getFileName().toString();
-            System.out.println(recuitFileName);
-            FileOperationOnList fo = new FileOperationOnList(resume, recuitFileName);
+            System.out.println(fileName);
+            FileOperationOnList fo = new FileOperationOnList(resume, fileName);
             try {
                 fo.readFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
             resume = fo.getDocument();
-//            for (String line : document) {
-//                System.out.println(line);
-//            }
-            recruiterMap.put(p,resume);
+            recruiterMap.put(fileName,resume);
         }
 
-
-//        Path path1 = Paths.get(filename);
-//        System.out.println(path1);
-//
-//        File file = new File(filename);
-//        BufferedReader reader = null;
-//        try {
-//            reader = new BufferedReader(new FileReader(file));
-//            String line = reader.readLine();
-//            while (line != null) {
-//                System.out.println(line);
-////                    String[] key_value_pair = line.split("\t");
-////                    System.out.println("KV Pair:" + key_value_pair[0] + " " + key_value_pair[1]);
-////                    //the key is in key_value_pair[0]
-////                    //the value is in key_value_pair[1]
-////                    // now you could add it back to the hash map if it isn't there already
-////
-//                line = reader.readLine();
-//            }
-//            reader.close();
-//        } catch (IOException e) {
-//            System.out.println("File does not exist!");
-//        }
-
+        //iterating over values only
+        for (List<String> resume : recruiterMap.values()) {
+            int start = resume.indexOf("Skills");
+            int end = resume.size();
+            //System.out.println(start + " " + end);
+            for (int i = start; i < resume.size(); i++) {
+                 if(resume.get(i).contains("Java")){
+                    System.out.println(resume.get(2) +"has java skill");
+                    break;
+                }
+            }
+        }
     }
 }
