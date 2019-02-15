@@ -19,12 +19,10 @@ import java.util.function.Consumer;
 public class Recruiter {
     public static void main(String[] args) {
         System.out.println("There are following people files in the system");
+
         //Load all resume paths
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
-        List<Path> pathList = new ArrayList<>();
-        List<String> fileList = new ArrayList<>();
-
-        List<String> recruitNames = new ArrayList<>();
+        List<String> fileNameList = new ArrayList<>();
 
         //HashMap of Recruit File name and their resume
         Map<String, List<String>> recruiterMap = new HashMap<>();
@@ -36,15 +34,14 @@ public class Recruiter {
                     .forEach(new Consumer<Path>() {
                         @Override
                         public void accept(Path path) {
-                            pathList.add(path);
-                            fileList.add(path.getFileName().toString());
+                            fileNameList.add(path.getFileName().toString());
                         }
                     });
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (String fileName : fileList) {
+        for (String fileName : fileNameList) {
             List<String> resume = new ArrayList<>();
             System.out.println(fileName);
             FileOperationOnList fo = new FileOperationOnList(resume, fileName);
@@ -59,7 +56,7 @@ public class Recruiter {
 
         System.out.print("\nEnter the skill you are looking for: ");
         Scanner keyboard = new Scanner(System.in);
-        String skill = keyboard.nextLine();
+        String skill = keyboard.nextLine().toLowerCase();
 
         //iterating over values only
         for (List<String> resume : recruiterMap.values()) {
@@ -67,7 +64,7 @@ public class Recruiter {
             int end = resume.size();
             //System.out.println(start + " " + end);
             for (int i = start; i < resume.size(); i++) {
-                if (resume.get(i).contains(skill)) {
+                if (resume.get(i).toLowerCase().contains(skill)) {
                     System.out.println(resume.get(2) + " has java skill");
                     break;
                 }
