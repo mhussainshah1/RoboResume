@@ -2,17 +2,12 @@ package com.company;
 
 import util.FileOperationOnList;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 /**
@@ -32,10 +27,10 @@ public class Recruiter {
         List<String> recruitNames = new ArrayList<>();
 
         //HashMap of Recruit File name and their resume
-        Map<String , List<String> > recruiterMap = new HashMap<>();
+        Map<String, List<String>> recruiterMap = new HashMap<>();
 
         //Add all path of txt files
-        try{
+        try {
             Files.walk(path)
                     .filter(p -> p.toString().endsWith(".txt"))
                     .forEach(new Consumer<Path>() {
@@ -45,11 +40,11 @@ public class Recruiter {
                             fileList.add(path.getFileName().toString());
                         }
                     });
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (String fileName: fileList) {
+        for (String fileName : fileList) {
             List<String> resume = new ArrayList<>();
             System.out.println(fileName);
             FileOperationOnList fo = new FileOperationOnList(resume, fileName);
@@ -59,8 +54,12 @@ public class Recruiter {
                 e.printStackTrace();
             }
             resume = fo.getDocument();
-            recruiterMap.put(fileName,resume);
+            recruiterMap.put(fileName, resume);
         }
+
+        System.out.print("\nEnter the skill you are looking for: ");
+        Scanner keyboard = new Scanner(System.in);
+        String skill = keyboard.nextLine();
 
         //iterating over values only
         for (List<String> resume : recruiterMap.values()) {
@@ -68,8 +67,8 @@ public class Recruiter {
             int end = resume.size();
             //System.out.println(start + " " + end);
             for (int i = start; i < resume.size(); i++) {
-                 if(resume.get(i).contains("Java")){
-                    System.out.println(resume.get(2) +"has java skill");
+                if (resume.get(i).contains(skill)) {
+                    System.out.println(resume.get(2) + " has java skill");
                     break;
                 }
             }

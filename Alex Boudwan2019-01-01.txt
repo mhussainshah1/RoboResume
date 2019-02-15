@@ -24,7 +24,7 @@ Shell Shipping Management Ltd, May 2008 - Mar 2014
 
 Skills
 USCG Master unlimited license,Advanced
-Html,Basic
+HTML,Basic
 CSS,Basic
 C#,Basic
 PHP,Advance
