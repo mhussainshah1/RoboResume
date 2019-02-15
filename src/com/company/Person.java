@@ -112,6 +112,7 @@ public class Person {
     @Override
     public String toString() {
         String output ="\n" +
+                date +"\n"+
                 name + "\n" +
                 email + "\n" +
                 phoneNumber+ "\n";

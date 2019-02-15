@@ -1,0 +1,26 @@
+
+2019-02-15
+David Wolf
+davidwolf@montgomerycollege.edu
+9876543210
+
+Education
+PHD in Computer Science
+George Washington University, 1995
+
+MS in Information Technology
+NYU, 1990
+
+
+Experience
+Teacher
+Montgomey College, May 2016 - Present
+- Duty 1, Information Technology Teacher
+- Duty 2, Software Enginerr
+
+
+Skills
+Java,Expert
+C#,Expert
+PHP,Expert
+

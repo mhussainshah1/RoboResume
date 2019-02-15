@@ -31,31 +31,33 @@ import java.util.Scanner;
 public class ResumeBuilder {
 
     public static void main(String[] args) {
-        List<Person> people = new ArrayList<>();
+        readResume();
+        newResume();
+    }
+
+    public static void readResume() {
         Scanner keyboard = new Scanner(System.in);
-        char answer;
         char choice;
 
-        System.out.print("Enter the user name: ");
+        System.out.print("Enter your first name: ");
         String name = keyboard.nextLine();
 
         //String startingDir = System.getProperty("user.dir") + File.separatorChar;// + name + ".txt";
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
 
-        String pattern = name +"*.txt";
+        String pattern = name + "*.txt";
         Finder finder = new Finder(pattern);
-        String filePath = "", filename ="";
-        try{
+        String filePath = "", filename = "";
+        try {
             Files.walkFileTree(path, finder);
-            System.out.println("We have found "+ finder.done() +
-                    " following resume(s) starting with " + name );
-            for(Path p : finder.getPathList()){
+            System.out.println("We have found " + finder.done() +
+                    " following resume(s) starting with " + name);
+            for (Path p : finder.getPathList()) {
                 filePath = p.toString();
                 filename = p.getFileName().toString();
-                System.out.println( filename);
+                System.out.println(filename);
             }
-
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -100,7 +102,7 @@ public class ResumeBuilder {
                 System.out.print("Enter corrected Phone number: ");
                 document.set(4, keyboard.nextLine());
             }
-            fo = new FileOperationOnList(document, document.get(2) +document.get(1)+".txt");
+            fo = new FileOperationOnList(document, document.get(2) + document.get(1) + ".txt");
             try {
                 fo.writeFile();
             } catch (FileNotFoundException e) {
@@ -109,7 +111,7 @@ public class ResumeBuilder {
 
             System.out.print("Do you want to delete old file at (" + filePath + ")?");
             choice = keyboard.nextLine().charAt(0);
-            if(choice == 'y'){
+            if (choice == 'y') {
                 try {
                     Files.delete(path);
                 } catch (NoSuchFileException x) {
@@ -121,11 +123,15 @@ public class ResumeBuilder {
                     System.err.println(x);
                 }
             }
-
         } else {
             System.out.println("There is no resume");
         }
+    }
 
+    public static void newResume(){
+        List<Person> people = new ArrayList<>();
+        Scanner keyboard = new Scanner(System.in);
+        char choice;
         System.out.print("Do you want to enter resume? (y/n):");
         choice = keyboard.nextLine().charAt(0);
 
@@ -243,7 +249,7 @@ public class ResumeBuilder {
 
                 //writing resume into a file
                 System.out.println("writing the resume into a file");
-                filename = System.getProperty("user.dir") + File.separatorChar + person.getName() + ".txt";
+                String filename = System.getProperty("user.dir") + File.separatorChar + person.getName() + person.getDate() + ".txt";
                 System.out.println(filename);
 
                 PrintWriter writer = null;
@@ -259,18 +265,4 @@ public class ResumeBuilder {
         }
     }
 
-    public static List<String> readLines(File file) throws Exception {
-        if (!file.exists()) {
-            return new ArrayList<>();
-        }
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        List<String> results = new ArrayList<>();
-        String line = reader.readLine();
-        while (line != null) {
-            results.add(line);
-            line = reader.readLine();
-        }
-        reader.close();
-        return results;
-    }
 }
