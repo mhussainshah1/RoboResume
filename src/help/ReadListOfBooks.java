@@ -4,6 +4,7 @@ import java.io.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class ReadListOfBooks {
@@ -25,7 +26,7 @@ public class ReadListOfBooks {
          * consistently and can insert the correct casts on values
          * being taken out of the collection.
          */
-        ArrayList<String> books = new ArrayList<String>();
+        List<String> books = new ArrayList<>();
 
         //get a filename
         System.out.println((System.getProperty("user.dir") + File.separatorChar + "mybooks.txt"));
@@ -110,12 +111,12 @@ public class ReadListOfBooks {
         System.out.println("random book:" + books.get(index));
     }
 
-    public static ArrayList<String> readLines(File file) throws Exception {
+    public static List<String> readLines(File file) throws Exception {
         if (!file.exists()) {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
         BufferedReader reader = new BufferedReader(new FileReader(file));
-        ArrayList<String> results = new ArrayList<String>();
+        List<String> results = new ArrayList<>();
         String line = reader.readLine();
         while (line != null) {
             results.add(line);

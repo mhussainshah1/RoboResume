@@ -1,15 +1,15 @@
 package com.company;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.io.Serializable;
 
-public class Person implements Serializable{
-    //default serialVersion id
-    private static final long serialVersionUID = 1L;
+public class Person {
 
+    private LocalDate date;
     private String name;
     private String email;
     private String phoneNumber;
@@ -21,6 +21,15 @@ public class Person implements Serializable{
         educations = new ArrayList<>();
         experiences = new ArrayList<>();
         skills = new ArrayList<>();
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        this.date = LocalDate.parse(date, f);
     }
 
     public String getName() {

@@ -10,8 +10,8 @@ public class FileOperationOnList {
 
     //constructor
     public FileOperationOnList(){
-        document = new ArrayList<String>();
-        filename = System.getProperty("user.dir") + File.separatorChar + "history.txt";
+//        document = new ArrayList<String>();
+//        filename = System.getProperty("user.dir") + File.separatorChar + "history.txt";
     }
 
     public FileOperationOnList(List<String> document, String filename) {
@@ -38,9 +38,12 @@ public class FileOperationOnList {
 
     //Read File
     public void readFile() throws IOException {
+        //System.out.println(filename);
         File file = new File(filename);
         if (file.exists()) {
             document = readLines(file);
+        } else{
+            throw new IOException("File not found");
         }
     }
 
@@ -52,9 +55,10 @@ public class FileOperationOnList {
         StringBuilder builder = new StringBuilder();
         for (String value : document) {
             builder.append(value);
+            builder.append("\n");
         }
-        //String text = builder.toString();
-        writer.println(builder);
+        String text = builder.toString();
+        writer.println(text);
         writer.close();
     }
 

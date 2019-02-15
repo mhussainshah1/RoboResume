@@ -1,4 +1,0 @@
-bat	Squeak
-cat	Meow
-ape	Squeak
-dog	Woof
