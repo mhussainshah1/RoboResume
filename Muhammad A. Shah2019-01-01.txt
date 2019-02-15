@@ -1,8 +1,8 @@
 
 2019-01-01
-Muhammad Shah
-m_hussain_shah123@hotmail.com
-9176054835
+Muhammad A. Shah
+mhussainshah79@gmail.com
+9176054834
 
 Education
 MS in International Transportation
@@ -28,6 +28,5 @@ Java,Oracle Certified Associates
 Html,Basic
 Javascript,Basic
 CSS,Basic
-
 
 

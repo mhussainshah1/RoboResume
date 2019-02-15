@@ -1,4 +1,8 @@
 package com.company;
+/**
+ * The program overwriting existing file
+ *
+ */
 
 import help.Finder;
 import util.FileOperationOnList;
@@ -35,29 +39,30 @@ public class ResumeBuilder {
         System.out.print("Enter the user name: ");
         String name = keyboard.nextLine();
 
-        String startingDir = System.getProperty("user.dir") + File.separatorChar;// + name + ".txt";
-        Path path = Paths.get(startingDir);
+        //String startingDir = System.getProperty("user.dir") + File.separatorChar;// + name + ".txt";
+        Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
 
         String pattern = name +"*.txt";
         Finder finder = new Finder(pattern);
-        String filePath, filename ="";
+        String filePath = "", filename ="";
         try{
             Files.walkFileTree(path, finder);
+            System.out.println("We have found "+ finder.done() +
+                    " following resume(s) starting with " + name );
             for(Path p : finder.getPathList()){
                 filePath = p.toString();
                 filename = p.getFileName().toString();
-                System.out.println(p);
+                System.out.println( filename);
             }
-            System.out.println(finder.done());
+
         } catch (IOException e){
             e.printStackTrace();
         }
 
         File file = new File(filename);
         if (file.exists()) {
-            //read from a file
+            //read from a file into arraylist
             System.out.println("reading resume from a file");
-            //file into arraylist
             List<String> document = new ArrayList<>();
             FileOperationOnList fo = new FileOperationOnList(document, filename);
             try {
@@ -66,9 +71,9 @@ public class ResumeBuilder {
                 e.printStackTrace();
             }
             document = fo.getDocument();
-//            for (String line : document) {
-//                System.out.println(line);
-//            }
+            for (String line : document) {
+                System.out.println(line);
+            }
 //            for (int i = 0; i < 5; i++) {
 //                System.out.println(i + " " + document.get(i));
 //            }
@@ -95,27 +100,28 @@ public class ResumeBuilder {
                 System.out.print("Enter corrected Phone number: ");
                 document.set(4, keyboard.nextLine());
             }
-            fo = new FileOperationOnList(document, document.get(2) +document.get(1));
+            fo = new FileOperationOnList(document, document.get(2) +document.get(1)+".txt");
             try {
                 fo.writeFile();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
 
-            try {
-                if(Files.deleteIfExists(path)){
-                    System.out.println("deleting old file");
-                } else {
-                    System.out.println("old file is not deleted");
+            System.out.print("Do you want to delete old file at (" + filePath + ")?");
+            choice = keyboard.nextLine().charAt(0);
+            if(choice == 'y'){
+                try {
+                    Files.delete(path);
+                } catch (NoSuchFileException x) {
+                    System.err.format("%s: no such" + " file or directory%n", path);
+                } catch (DirectoryNotEmptyException x) {
+                    System.err.format("%s not empty%n", path);
+                } catch (IOException x) {
+                    // File permission problems are caught here.
+                    System.err.println(x);
                 }
-            } catch (NoSuchFileException x) {
-                System.err.format("%s: no such" + " file or directory%n", path);
-            } catch (DirectoryNotEmptyException x) {
-                System.err.format("%s not empty%n", path);
-            } catch (IOException x) {
-                // File permission problems are caught here.
-                System.err.println(x);
             }
+
         } else {
             System.out.println("There is no resume");
         }

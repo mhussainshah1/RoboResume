@@ -1,5 +1,18 @@
 package help;
+/**
+ * Sample code that finds files that match the specified glob pattern.
+ * For more information on what constitutes a glob pattern, see
+ * https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob
+ * <p>
+ * The file or directories that match the pattern are printed to
+ * standard out.  The number of matches is also printed.
+ * <p>
+ * When executing this application, you must put the glob pattern
+ * in quotes, so the shell will not expand any wild cards:
+ * java Find . -name "*.java"
+ */
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -32,7 +45,7 @@ public class Finder extends SimpleFileVisitor<Path> {
     // Prints the total number of
     // matches to standard out.
     public String done() {
-        return("Matched: " + numMatches);
+        return("Found: " + numMatches);
     }
 
     // Invoke the pattern matching
@@ -59,5 +72,25 @@ public class Finder extends SimpleFileVisitor<Path> {
 
     public List<Path> getPathList() {
         return pathList;
+    }
+}
+
+class FindUsage {
+
+    static void usage() {
+        System.err.println("java Find <path> -name \"<glob_pattern>\"");
+        System.exit(-1);
+    }
+
+    public static void main(String[] args) throws IOException {
+//        if (args.length < 3 || !args[1].equals("-name"))
+//            usage();
+
+        Path startingDir = Paths.get(System.getProperty("user.dir") + File.separatorChar);//args[0]);
+        String pattern = "Muhammad*.txt";//args[2];
+
+        Finder finder = new Finder(pattern);
+        Files.walkFileTree(startingDir, finder);
+        finder.done();
     }
 }
