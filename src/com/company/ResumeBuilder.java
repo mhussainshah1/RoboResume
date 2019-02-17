@@ -106,7 +106,7 @@ public class ResumeBuilder {
                 System.out.print("Enter corrected Phone number: ");
                 document.set(PHONE_NUMBER_INDEX, keyboard.nextLine());
             }
-            fo = new FileOperationOnList(document, document.get(NAME_INDEX) + document.get(DATE_INDEX) + ".txt");
+            fo = new FileOperationOnList(document,  document.get(DATE_INDEX) + document.get(NAME_INDEX) + ".txt");
             try {
                 fo.writeFile();
             } catch (FileNotFoundException e) {
@@ -253,7 +253,7 @@ public class ResumeBuilder {
 
                 //writing resume into a file
                 System.out.println("writing the resume into a file");
-                String filename = System.getProperty("user.dir") + File.separatorChar + person.getName() + person.getDate() + ".txt";
+                String filename = System.getProperty("user.dir") + File.separatorChar + person.getDate() + person.getName()  + ".txt";
                 System.out.println(filename);
 
                 PrintWriter writer = null;
