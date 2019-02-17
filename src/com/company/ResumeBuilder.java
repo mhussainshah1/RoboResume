@@ -30,6 +30,11 @@ import java.util.Scanner;
  */
 public class ResumeBuilder {
 
+    private static int DATE_INDEX = 1;
+    private static int NAME_INDEX = 2;
+    private static int EMAIL_INDEX =3;
+    private static int PHONE_NUMBER_INDEX = 4;
+
     public static void main(String[] args) {
         readResume();
         newResume();
@@ -84,7 +89,7 @@ public class ResumeBuilder {
 
             if (choice == 'y') {
                 System.out.print("Enter corrected name: ");
-                document.set(2, keyboard.nextLine());
+                document.set(NAME_INDEX, keyboard.nextLine());
             }
 
             System.out.print("Do you want to change your email? (y/n)");
@@ -92,7 +97,7 @@ public class ResumeBuilder {
 
             if (choice == 'y') {
                 System.out.print("Enter corrected Email: ");
-                document.set(3, keyboard.nextLine());
+                document.set(EMAIL_INDEX, keyboard.nextLine());
             }
 
             System.out.print("Do you want to change your Phone number? (y/n)");
@@ -100,9 +105,9 @@ public class ResumeBuilder {
 
             if (choice == 'y') {
                 System.out.print("Enter corrected Phone number: ");
-                document.set(4, keyboard.nextLine());
+                document.set(PHONE_NUMBER_INDEX, keyboard.nextLine());
             }
-            fo = new FileOperationOnList(document, document.get(2) + document.get(1) + ".txt");
+            fo = new FileOperationOnList(document, document.get(NAME_INDEX) + document.get(DATE_INDEX) + ".txt");
             try {
                 fo.writeFile();
             } catch (FileNotFoundException e) {
