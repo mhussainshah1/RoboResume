@@ -4,7 +4,7 @@ package com.company;
  *
  */
 
-import help.Finder;
+import util.Finder;
 import util.FileOperationOnList;
 
 import java.io.*;

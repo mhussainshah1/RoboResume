@@ -1,4 +1,4 @@
-package help;
+package util;
 /**
  * Sample code that finds files that match the specified glob pattern.
  * For more information on what constitutes a glob pattern, see

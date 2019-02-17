@@ -9,8 +9,7 @@ PHD in Computer Science
 George Washington University, 1995
 
 MS in Information Technology
-NYU, 1990
-
+New York University, 1990
 
 Experience
 Teacher
@@ -23,4 +22,3 @@ Skills
 Java,Expert
 C#,Expert
 PHP,Expert
-

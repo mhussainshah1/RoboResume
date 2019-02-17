@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Create a recruiter class. The recruiter can search all the resumes and find those with a particular skill. You only
@@ -30,8 +31,12 @@ public class Recruiter {
         //Add all path of txt files
         try {
             Files.walk(path)
-                    .filter(p -> p.toString().endsWith(".txt"))
-                    .forEach(new Consumer<Path>() {
+                    .filter(new Predicate<Path>() {
+                        @Override
+                        public boolean test(Path path) {
+                            return path.toString().endsWith(".txt");
+                        }
+                    }).forEach(new Consumer<Path>() {
                         @Override
                         public void accept(Path path) {
                             fileNameList.add(path.getFileName().toString());

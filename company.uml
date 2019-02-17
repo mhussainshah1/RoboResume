@@ -3,25 +3,74 @@
   <ID>JAVA</ID>
   <OriginalElement>com.company</OriginalElement>
   <nodes>
-    <node x="327.0" y="0.0">com.company.Experience</node>
-    <node x="0.0" y="0.0">com.company.Person</node>
-    <node x="0.0" y="368.0">com.company.Education</node>
-    <node x="406.0" y="368.0">com.company.Recruiter</node>
-    <node x="203.0" y="368.0">com.company.Skill</node>
-    <node x="0.0" y="566.0">com.company.ResumeBuilder</node>
+    <node x="0.0" y="0.0">com.company.Experience</node>
+    <node x="95.375" y="234.0">com.company.Person</node>
+    <node x="221.5568181818182" y="11.5">com.company.Education</node>
+    <node x="586.5568181818182" y="0.0">com.company.Recruiter</node>
+    <node x="246.5" y="645.0">com.company.ResumeBuilder</node>
+    <node x="391.5568181818182" y="33.5">com.company.Skill</node>
   </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="343.0" y="381.0" />
+  <edges>
+    <edge source="com.company.Person" target="com.company.Skill">
+      <point x="65.25" y="-170.5" />
+      <point x="291.125" y="204.0" />
+      <point x="410.3068181818182" y="204.0" />
+      <point x="-56.25" y="48.5" />
+    </edge>
+    <edge source="com.company.ResumeBuilder" target="com.company.Skill">
+      <point x="72.1875" y="-48.0" />
+      <point x="401.1875" y="625.0" />
+      <point x="496.3068181818182" y="625.0" />
+      <point x="496.3068181818182" y="214.0" />
+      <point x="522.8068181818182" y="214.0" />
+      <point x="56.25" y="48.5" />
+    </edge>
+    <edge source="com.company.ResumeBuilder" target="com.company.Experience">
+      <point x="-51.5625" y="-48.0" />
+      <point x="277.4375" y="615.0" />
+      <point x="51.0" y="615.0" />
+      <point x="51.0" y="214.0" />
+      <point x="68.25" y="214.0" />
+      <point x="-22.75" y="82.0" />
+    </edge>
+    <edge source="com.company.Person" target="com.company.Education">
+      <point x="-21.75" y="-170.5" />
+      <point x="204.125" y="214.0" />
+      <point x="240.3068181818182" y="214.0" />
+      <point x="-56.25" y="70.5" />
+    </edge>
+    <edge source="com.company.ResumeBuilder" target="com.company.Person">
+      <point x="-30.9375" y="-48.0" />
+      <point x="298.0625" y="605.0" />
+      <point x="160.625" y="605.0" />
+      <point x="-65.25" y="170.5" />
+    </edge>
+    <edge source="com.company.ResumeBuilder" target="com.company.Education">
+      <point x="10.3125" y="-48.0" />
+      <point x="339.3125" y="595.0" />
+      <point x="366.875" y="595.0" />
+      <point x="366.875" y="194.0" />
+      <point x="315.3068181818182" y="194.0" />
+      <point x="18.75" y="70.5" />
+    </edge>
+    <edge source="com.company.Person" target="com.company.Experience">
+      <point x="-65.25" y="-170.5" />
+      <point x="160.625" y="214.0" />
+      <point x="159.25" y="214.0" />
+      <point x="68.25" y="82.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="124.0" y="127.5" />
   <SelectedNodes>
-    <node>com.company.Experience</node>
+    <node>com.company.ResumeBuilder</node>
   </SelectedNodes>
   <Categories>
-    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
     <Category>Constructors</Category>
     <Category>Fields</Category>
-    <Category>Properties</Category>
-    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
