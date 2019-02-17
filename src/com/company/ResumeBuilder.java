@@ -3,7 +3,6 @@ package com.company;
  * The program overwriting existing file
  *
  */
-
 import util.Finder;
 import util.FileOperationOnList;
 
