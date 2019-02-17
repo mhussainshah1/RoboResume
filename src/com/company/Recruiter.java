@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -18,17 +19,20 @@ import java.util.function.Predicate;
  */
 
 public class Recruiter {
+    private static int DATE_INDEX = 1;
+    private static int NAME_INDEX = 2;
     public static void main(String[] args) {
-        System.out.println("There are following people files in the system");
+        System.out.println("There are following people are in the system start from latest date");
 
         //Load all resume paths
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
+
         List<String> fileNameList = new ArrayList<>();
 
         //HashMap of Recruit File name and their resume
-        Map<String, List<String>> recruiterMap = new HashMap<>();
+        Map<LocalDate, List<String>> recruiterMap = new HashMap<>();
 
-        //Add all path of txt files
+        //Add all names of txt files in the "fileNameList"
         try {
             Files.walk(path)
                     .filter(new Predicate<Path>() {
@@ -46,9 +50,13 @@ public class Recruiter {
             e.printStackTrace();
         }
 
+        //The file names are added by default in the sorted order.
+        //Make reverse to make most current date on top
+        Collections.reverse(fileNameList);
+
         for (String fileName : fileNameList) {
             List<String> resume = new ArrayList<>();
-            System.out.println(fileName);
+            //System.out.println(fileName);
             FileOperationOnList fo = new FileOperationOnList(resume, fileName);
             try {
                 fo.readFile();
@@ -56,7 +64,12 @@ public class Recruiter {
                 e.printStackTrace();
             }
             resume = fo.getDocument();
-            recruiterMap.put(fileName, resume);
+            System.out.println(resume.get(NAME_INDEX) +"\tsubmited resume on\t" + resume.get(DATE_INDEX));
+            //first 10 characters of file name is date submittted in string .
+           // String string = fileName.substring(0,10);
+            //parse into Local Date
+            LocalDate date = LocalDate.parse(resume.get(DATE_INDEX));
+            recruiterMap.put(date, resume);
         }
 
         System.out.print("\nEnter the skill you are looking for: ");
@@ -68,9 +81,9 @@ public class Recruiter {
             int start = resume.indexOf("Skills");
             int end = resume.size();
             //System.out.println(start + " " + end);
-            for (int i = start; i < resume.size(); i++) {
+            for (int i = start; i < end; i++) {
                 if (resume.get(i).toLowerCase().contains(skill)) {
-                    System.out.println(resume.get(2) + " has java skill");
+                    System.out.println(resume.get(NAME_INDEX) + " has java skill");
                     break;
                 }
             }
