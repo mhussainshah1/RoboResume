@@ -49,13 +49,13 @@ public class ResumeBuilder {
         //String startingDir = System.getProperty("user.dir") + File.separatorChar;// + name + ".txt";
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
 
-        String pattern = name + "*.txt";
+        String pattern = "*" + name + "*.txt";
         Finder finder = new Finder(pattern);
         String filePath = "", filename = "";
         try {
             Files.walkFileTree(path, finder);
             System.out.println("We have found " + finder.done() +
-                    " following resume(s) starting with " + name);
+                    " following resume(s) have " + name);
             for (Path p : finder.getPathList()) {
                 filePath = p.toString();
                 filename = p.getFileName().toString();

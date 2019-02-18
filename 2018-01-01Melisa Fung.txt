@@ -1,0 +1,33 @@
+
+2018-01-01
+Melisa Fung
+melissafung@hotmail.com
+9119119112
+
+Education
+MS in Computer Science
+George Washington University, 2008
+
+BS in Sociology
+Montgomery College, 2006
+
+
+Experience
+Teacher
+Montgomery College, Dec 2016 - Present
+- Duty 1, Java anguage Teacher
+- Duty 2, HTML Teacher
+
+Developer
+Flatiron, MAR 2010 - N0v 2016
+- Duty 1, Backend developer of VB.NET
+- Duty 2, Front End developer of Javascript
+
+
+Skills
+MCSD,Expert
+OCA 8 Java,Intermediate
+Javascript,Novice
+PHP,Advanced
+
+

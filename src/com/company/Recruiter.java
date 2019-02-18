@@ -22,7 +22,7 @@ public class Recruiter {
     private static int DATE_INDEX = 1;
     private static int NAME_INDEX = 2;
     public static void main(String[] args) {
-        System.out.println("There are following people are in the system start from latest date");
+        System.out.println("There are following people are in the system, start from latest date");
 
         //Load all resume paths
         Path path = Paths.get(System.getProperty("user.dir") + File.separatorChar);
@@ -83,7 +83,7 @@ public class Recruiter {
             //System.out.println(start + " " + end);
             for (int i = start; i < end; i++) {
                 if (resume.get(i).toLowerCase().contains(skill)) {
-                    System.out.println(resume.get(NAME_INDEX) + " has java skill");
+                    System.out.println(resume.get(NAME_INDEX) + " has "+ skill +" skill");
                     break;
                 }
             }
