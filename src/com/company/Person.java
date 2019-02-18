@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Person {
+public class Person implements Serializable {
 
     private LocalDate date;
     private String name;

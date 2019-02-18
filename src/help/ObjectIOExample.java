@@ -17,16 +17,18 @@ package help;
 
 import com.company.Person;
 import java.io.*;
+import java.time.LocalDate;
 
 public class ObjectIOExample {
 
-    private static final String filepath="C:\\Users\\GBTC440010ur\\IdeaProjects";//System.getProperty("user.dir") + File.separatorChar;// + "Muhammad Shah.txt";
+    private static final String filepath=System.getProperty("user.dir") + File.separatorChar + "test.txt";
 
     public static void main(String args[]) {
 
         ObjectIOExample objectIO = new ObjectIOExample();
 
         Person person = new Person();
+        person.setDate("02/17/2019");
         person.setName("Muhammad Shah");
         person.setEmail("m_hussain_shah@hotmail.com");
         person.setPhoneNumber("9176054834");
